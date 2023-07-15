@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     # my apps
     'account.apps.AccountConfig',
+    'posts.apps.PostsConfig',
 
 ]
 
