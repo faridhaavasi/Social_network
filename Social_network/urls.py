@@ -19,9 +19,12 @@ from django.urls import path
 from account import views
 from . import settings
 from django.conf.urls.static import static
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/register', views.RegisterView.as_view()),
+                  path('admin/', admin.site.urls),
+                  path('api/register', views.RegisterView.as_view()),
+                  path('api/login/', TokenObtainPairView.as_view(), name='login_pair'),
+                  path('api/login/refresh/', TokenRefreshView.as_view(), name='login_refresh'),
 
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
