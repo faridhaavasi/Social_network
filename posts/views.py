@@ -1,7 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import Post
-from .serializers import Postserializer
+from .models import Post, Comment
+from .serializers import Postserializer,Commentserializer
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import generics, mixins
 
@@ -65,5 +65,24 @@ class DetailPostMixinApi(mixins.RetrieveModelMixin,
 
     def delete(self, request, pk):
         return self.destroy(request, pk)
+
+# endregion
+# region Comment
+class Commwntmixin(mixins.CreateModelMixin, mixins.DestroyModelMixin, generics.GenericAPIView):
+    queryset = Comment.objects.all()
+
+    serializer_class = Commentserializer
+
+    def post(self, request):
+        return self.create(request)
+    def delete(self, request, pk):
+        return self.destroy(request, pk)
+
+
+
+
+
+
+
 
 # endregion
