@@ -1,6 +1,11 @@
 from rest_framework import serializers
 from account.models import User
 
+
+class SetemailSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+
+
 class RegisterSerializer(serializers.ModelSerializer):
     email = serializers.EmailField()
     password = serializers.CharField()
